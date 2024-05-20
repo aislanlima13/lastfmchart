@@ -70,7 +70,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For any inquiries or issues, please open an issue on the GitHub repository or contact the project maintainer at [your.email@example.com](aislan.martins99@gmail.com).
+For any inquiries or issues, please open an issue on the GitHub repository or contact the project maintainer at aislan.martins99@gmail.com.
 
 ---
 
