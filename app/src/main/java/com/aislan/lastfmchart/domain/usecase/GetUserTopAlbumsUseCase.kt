@@ -10,5 +10,5 @@ class GetUserTopAlbumsUseCase(private val repository: LastFmChartRepository) {
         period: String?,
         limit: Int?
     ): Resource<TopAlbums> =
-        repository.getUserTopAlbums(user, period, limit, "")
+        repository.getUserTopAlbums(user, period, limit)
 }

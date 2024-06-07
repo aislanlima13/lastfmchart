@@ -4,5 +4,9 @@ import com.aislan.lastfmchart.data.model.TopAlbums
 import retrofit2.Response
 
 interface LastfmRemoteDataSource {
-    suspend fun getTopAlbums(): Response<TopAlbums>
+    suspend fun getTopAlbums(
+        user: String,
+        period: String?,
+        limit: Int?
+    ): Response<TopAlbums>
 }

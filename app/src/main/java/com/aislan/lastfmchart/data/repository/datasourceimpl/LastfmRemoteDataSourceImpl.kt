@@ -6,11 +6,12 @@ import com.aislan.lastfmchart.data.repository.datasource.LastfmRemoteDataSource
 import retrofit2.Response
 
 class LastfmRemoteDataSourceImpl(
-    private val apiService: ApiService,
-    private val user: String,
-    private val period: String?,
-    private val limit: Int?
+    private val apiService: ApiService
 ): LastfmRemoteDataSource {
-    override suspend fun getTopAlbums(): Response<TopAlbums> =
+    override suspend fun getTopAlbums(
+        user: String,
+        period: String?,
+        limit: Int?
+    ): Response<TopAlbums> =
         apiService.getTopAlbums(user, period, limit)
 }

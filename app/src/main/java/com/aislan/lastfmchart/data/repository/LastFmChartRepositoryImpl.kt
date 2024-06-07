@@ -12,10 +12,13 @@ class LastFmChartRepositoryImpl(
     override suspend fun getUserTopAlbums(
         user: String,
         period: String?,
-        limit: Int?,
-        apiKey: String
+        limit: Int?
     ): Resource<TopAlbums> {
-        return responseToResource(lastfmRemoteDataSource.getTopAlbums())
+        return responseToResource(lastfmRemoteDataSource.getTopAlbums(
+            user,
+            period,
+            limit
+        ))
     }
 
     private fun responseToResource(response: Response<TopAlbums>): Resource<TopAlbums> {

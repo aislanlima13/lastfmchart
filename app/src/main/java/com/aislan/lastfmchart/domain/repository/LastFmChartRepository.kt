@@ -7,8 +7,7 @@ interface LastFmChartRepository {
     suspend fun getUserTopAlbums(
         user: String,
         period: String?,
-        limit: Int?,
-        apiKey: String
+        limit: Int?
     ): Resource<TopAlbums>
 
     fun shareTopAlbums()
