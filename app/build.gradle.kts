@@ -22,8 +22,8 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-        buildConfigField("String", "API_KEY", "\"$apiKey\"")
-        buildConfigField("String", "BASE_URL", "\"$baseUrl\"")
+        buildConfigField("String", "API_KEY", apiKey.toString())
+        buildConfigField("String", "BASE_URL", baseUrl.toString())
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -77,12 +77,14 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
 
     // hilt
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    testImplementation("com.google.dagger:hilt-android-testing:2.51.1")
+    testAnnotationProcessor("com.google.dagger:hilt-compiler:2.51.1")
 }
 
 kapt {
