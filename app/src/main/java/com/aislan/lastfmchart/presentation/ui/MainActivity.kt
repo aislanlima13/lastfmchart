@@ -5,16 +5,9 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.aislan.lastfmchart.presentation.ui.ui.theme.LastfmChartTheme
 import com.aislan.lastfmchart.presentation.viewmodel.LastFmViewModel
 import com.aislan.lastfmchart.presentation.viewmodel.LastFmViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,18 +22,14 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         initViewModel()
         observer()
+        viewModel.getTopAlbums("AislanLima", "7day", 1)
+
         enableEdgeToEdge()
         setContent {
-            LastfmChartTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+            LastFmChartComposeApp()
         }
     }
 
@@ -49,25 +38,14 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun observer() {
-        viewModel.getTopAlbums("AislanLima", "7day", 1)
         viewModel.topAlbums.observe(this) {
             Log.i("top_album", it.data?.topalbums!!.album[0].name)
         }
     }
 }
 
+@Preview
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    LastfmChartTheme {
-        Greeting("Android")
-    }
+fun Preview() {
+    LastFmChartComposeApp()
 }
