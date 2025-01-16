@@ -14,12 +14,12 @@ val baseUrl = properties["BASE_URL"]
 
 android {
     namespace = "com.aislan.lastfmchart"
-    compileSdk = 34
+    compileSdkPreview = "Baklava"
 
     defaultConfig {
         applicationId = "com.aislan.lastfmchart"
-        minSdk = 26
-        targetSdk = 34
+        minSdk = 30
+        targetSdkPreview = "Baklava"
         versionCode = 1
         versionName = "1.0"
         buildConfigField("String", "API_KEY", apiKey.toString())
